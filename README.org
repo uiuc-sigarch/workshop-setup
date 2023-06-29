@@ -27,13 +27,13 @@ Host EWS
     ForwardAgent yes
     ForwardX11 yes
 #+END_SRC
-*** Verilator (local)
-If you /really/ want to work offline, you'll have to install a different simulator locally to test your code. We recommend verilator (although if you have a preference / something previously installed, that should work fine). Verilator is free, open source, and very fast, but it cuts some corners to achieve that speed, and as a result is missing some features. It should work well for most RTL development purposes, but it is missing [[https://en.wikipedia.org/wiki/Universal_Verification_Methodology][UVM]] support.
-To install, follow the instructions [[https://verilator.org/guide/latest/install.html][here]]. If you're using Windows, follow the Ubuntu install instructions on WSL.
-**** Running the Verilator starter code
-We've provided an example in the =verilator_starter= folder of this repository.
+*** Icarus Verilog (local)
+If you /really/ want to work offline, you'll have to install a different simulator locally to test your code. We recommend iverilog (although if you have a preference / something previously installed, that should work fine).
+To install, follow the instructions [[https://steveicarus.github.io/iverilog/usage/installation.html][here]].
+**** Running the iverilog starter code
+We've provided an example in the =iverilog_starter= folder of this repository.
 ***** Make + Run
-Enter the =run= subdirectory and execute the =make && make run= commands. You should see printed text that reads =Verilator setup complete=.
+Enter the =run= subdirectory and execute the =make && make run= commands. You should see printed text that reads =Icarus Verilog setup complete=.
 
 ** TODO Synthesizer
 
