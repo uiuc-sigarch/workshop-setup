@@ -1,0 +1,41 @@
+
+* Workshop Setup Guide
+Welcome to SIGARCH! We hope you're as excited as we are to get started with workshops, but before that happens, we need to make sure everyone has access to the necessary software tools.
+After some discussion, we've come to the conclusion that having a setup workshop would be a waste of time for everyone, due to the long waiting periods during install and large variation in setups. Don't worry though, you're not on your own; this repository should contain everything you need to be ready. If you do find yourself getting stuck at any point, head over to the =#toolchain-setup= channel on discord, and we'll help you out.
+*Please make your best effort to have a simulator installed before attending a workshop.*
+
+** Simulator
+*** VCS (remote)
+VCS is the industry standard, top of the line simulator for SystemVerilog. If you have regular internet access, we highly recommend using VCS, which comes pre-installed on the EWS machines.
+To connect to the workstations remotely, follow the guide [[https://answers.uillinois.edu/illinois.engineering/page.php?id=81693][here]]. If you dislike the remote work experience, but still want to use VCS, you can always go in person to an EWS lab and login using your netid (the closest one is in ECEB 2022).
+**** Running the VCS started code
+We've provided an example in the =vcs_starter= folder of this repository.
+***** Load the Synopsys module
+To use any software on the EWS machines, you'll first have to load the modules. To list all modules available to you, use the =module avail= command.
+VCS is a part of the =Synopsys_x86-64/2021= module. To load it, run =module load Synopsys_x86-64/2021=
+***** Make + Run
+Enter the =run= subdirectory and execute the =make && make run= commands. You should see printed text that reads =VCS setup complete=.
+
+**** Tips
+- If you don't want to load the module every time, add the =module load Synopsys_x86-64/2021= command to your =.bashrc=.
+- Add your ssh keys to the =~/.ssh/= folder on your EWS account. Re-entering your password every time is bound to get annoying at some point.
+- Add an entry to your local =~/.ssh/config= file enabling X forwarding. This will allow you to forward graphical application windows to your local machine (such as waveform viewers).[fn:1]
+#+BEGIN_SRC bash
+Host EWS
+    HostName linux.ews.illinois.edu
+    User <your-netid>
+    ForwardAgent yes
+    ForwardX11 yes
+#+END_SRC
+*** Verilator (local)
+If you /really/ want to work offline, you'll have to install a different simulator locally to test your code. We recommend verilator (although if you have a preference / something previously installed, that should work fine). Verilator is free, open source, and very fast, but it cuts some corners to achieve that speed, and as a result is missing some features. It should work well for most RTL development purposes, but it is missing [[https://en.wikipedia.org/wiki/Universal_Verification_Methodology][UVM]] support.
+To install, follow the instructions [[https://verilator.org/guide/latest/install.html][here]]. If you're using Windows, follow the Ubuntu install instructions on WSL.
+**** Running the Verilator starter code
+We've provided an example in the =verilator_starter= folder of this repository.
+***** Make + Run
+Enter the =run= subdirectory and execute the =make && make run= commands. You should see printed text that reads =Verilator setup complete=.
+
+** TODO Synthesizer
+
+* Footnotes
+[fn:1] If you're using gnome, you may get frequent pop-ups stating that the X-forwarded applications are unresponsive. This can be safely ignored. To disable the popups, run =gsettings set org.gnome.mutter check-alive-timeout 0= in a terminal.
